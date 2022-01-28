@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.zhengsr.wanandroid_jetpack.ui.data.PersonViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                app:layout_constraintTop_toTopOf="@+id/content"
+                android:backgroundTint="@color/main_color"
+                android:background="@mipmap/mine_background" />
+
+            <ImageView
+                android:id="@+id/mine_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="@id/content"
+                android:layout_marginTop="100dp"
+                app:layout_constraintLeft_toLeftOf="@id/content"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/head_icon" />
+
+            <TextView
+                android:id="@+id/mine_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/loginout"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="@id/mine_icon"
+                app:layout_constraintBottom_toBottomOf="@id/mine_icon"
+                app:layout_constraintLeft_toRightOf="@id/mine_icon"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/mine_user_setting"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="10dp"
+                android:padding="2dp"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintRight_toRightOf="@id/content"
+                app:layout_constraintTop_toTopOf="@id/mine_icon"
+                app:layout_constraintBottom_toBottomOf="@id/mine_icon"
+                android:src="@mipmap/white_enter"
+                app:tint="@color/unselect" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mine_tabrow"
+                android:layout_width="match_parent"
+                android:layout_height="103dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="4dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintTop_toBottomOf="@+id/mine_icon"
+                app:cardBackgroundColor="@color/colorCard"
+                app:cardElevation="1dp">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow android:layout_marginTop="25dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/level"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/ranking"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/coinCount"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/mine_level"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="----"
+                            android:textColor="@color/bottom_normal_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/mine_rank"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="----"
+                            android:textColor="@color/bottom_normal_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/mine_coin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="----"
+                            android:textColor="@color/bottom_normal_color"
+                            android:textSize="12sp" />
+                    </TableRow>
+
+                </TableLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mine_recyclerview_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="4dp"
+                app:layout_constraintTop_toBottomOf="@id/mine_tabrow"
+                app:cardElevation="1dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mine_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_mine" />
+            </androidx.cardview.widget.CardView>
+
+            <com.noober.background.view.BLButton
+                android:id="@+id/mine_logout"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:text="退出登录"
+                android:visibility="gone"
+                android:textSize="16sp"
+                android:textColor="@color/wechat"
+                app:layout_constraintLeft_toLeftOf="@id/content"
+                app:layout_constraintRight_toRightOf="@id/content"
+                app:layout_constraintTop_toBottomOf="@id/mine_recyclerview_ly"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/content"
+                android:layout_marginBottom="20dp"
+                app:bl_solid_color="@color/colorBackground"
+                app:bl_corners_radius="4dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

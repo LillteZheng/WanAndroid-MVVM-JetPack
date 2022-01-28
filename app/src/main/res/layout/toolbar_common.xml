@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="click"
+            type="com.zhengsr.wanandroid_jetpack.ui.page.home.HomeFragment.ClickProxy" />
+    </data>
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+        android:layout_height="235dp">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+            <com.zhengsr.viewpagerlib.view.BannerViewPager2
+                android:id="@+id/loop_viewpager_mz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:banner_isAutoLoop="true"
+                app:banner_looptime="3000"
+                app:banner_transformer="mz"
+                app:banner_iscycle="true"
+                android:onClick="@{()->click.openMenu()}"
+                app:banner_switchtime="600" />
+
+            <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+                android:id="@+id/rect_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="20dp"
+                app:cir_size="5dp"
+                app:cir_rect_width="10dp"
+                app:cir_normalColor="@color/gray"
+                app:cir_selectedColor="@color/white"
+                app:cir_horizon_margin="10dp"
+                app:cir_type="cirToRect" />
+
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            app:bl_corners_radius="8dp"
+            app:bl_solid_color="#88ffffff"
+            app:bl_stroke_width="1dp"
+            app:bl_stroke_color="#33666666"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:onClick="@{()->click.openMenu()}"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_menu_black_48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_search_black_48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+</layout>
