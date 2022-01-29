@@ -12,7 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 object DrawerDatabindAdapter  {
 
     @JvmStatic
-    @BindingAdapter(value = ["isOpenDrawer"], requireAll = false)
+    @BindingAdapter(value = ["openDrawer"], requireAll = false)
     fun openDrawer(drawerLayout: DrawerLayout, isOpenDrawer: Boolean) {
         if (isOpenDrawer && !drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.openDrawer(GravityCompat.START)

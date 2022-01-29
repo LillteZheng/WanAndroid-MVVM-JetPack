@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/BRV" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Wandroid-Jetpack" vcs="Git" />
   </component>
 </project>

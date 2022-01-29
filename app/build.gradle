@@ -59,14 +59,14 @@ dependencies {
     implementation 'com.kunminx.arch:strict-databinding:4.0.0-beta1'
     // navigation
     implementation "androidx.navigation:navigation-runtime-ktx:2.3.5"
-    implementation ('androidx.navigation:navigation-fragment-ktx:2.3.5'){
+    implementation('androidx.navigation:navigation-fragment-ktx:2.3.5') {
         exclude group: 'androidx.navigation', module: "navigation-fragment"
     }
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
     //下拉刷新
-    implementation  'io.github.scwang90:refresh-layout-kernel:2.0.5'
-    implementation  'io.github.scwang90:refresh-header-classics:2.0.5'
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.0.5'
+    implementation 'io.github.scwang90:refresh-header-classics:2.0.5'
 
     // DevApp - Android 工具类库
     implementation 'io.github.afkt:DevAppX:2.3.4'
@@ -86,4 +86,21 @@ dependencies {
 
     //今日头条适配方案
     implementation 'me.jessyan:autosize:1.2.1'
+
+    //网络
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.3.0"
+    implementation "com.squareup.okhttp3:okhttp:4.9.3"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+    implementation "com.github.franmontiel:PersistentCookieJar:v1.0.1"
+    //fastjson
+    implementation "com.alibaba:fastjson:1.1.71.android"
+    implementation "org.ligboy.retrofit2:converter-fastjson-android:2.1.0"
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "android.arch.lifecycle:compiler:1.1.1"
+    //recyclerview
+    implementation 'com.github.liangjingkanji:BRV:1.3.51'
 }

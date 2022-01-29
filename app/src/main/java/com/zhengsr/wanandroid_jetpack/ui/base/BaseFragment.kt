@@ -36,7 +36,7 @@ abstract class BaseFragment<T : ViewModel> : DataBindingFragment() {
         return fragmentProvider[moudleClass]
     }
 
-    protected fun <T : ViewModel> getApplicationViewModel(moudleClass: Class<T>): T {
+    private fun <T : ViewModel> getApplicationViewModel(moudleClass: Class<T>): T {
         return applicationProvider[moudleClass]
     }
 

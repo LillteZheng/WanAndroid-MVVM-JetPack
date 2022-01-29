@@ -1,8 +1,10 @@
 package com.zhengsr.wanandroid_jetpack.ui.page.home
 
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.zhengsr.wanandroid_jetpack.bean.BannerBean
 
 /**
  * @author by zhengshaorui 2022/1/24
@@ -10,8 +12,6 @@ import androidx.lifecycle.ViewModel
  */
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    val bannerBeans = MutableLiveData<List<BannerBean>>()
+    val isCollected = ObservableBoolean()
 }
