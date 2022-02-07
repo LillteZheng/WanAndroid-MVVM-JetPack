@@ -30,9 +30,10 @@
                 app:click="@{click}"
                 app:vm="@{vm}"
                 />
-            <include
-                layout="@layout/banner_layout"
-                app:vm="@{vm}"
+            <com.zhengsr.wanandroid_jetpack.ui.BannerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:banner="@{vm.bannerBeans}"
                 app:layout_scrollFlags="exitUntilCollapsed|scroll|enterAlwaysCollapsed"
                 />
         </com.google.android.material.appbar.AppBarLayout>

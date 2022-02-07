@@ -28,4 +28,12 @@ interface HttpServerApi {
      */
     @GET("article/list/{num}/json")
     suspend fun getArticle(@Path("num") num: Int): BaseResponse<PageDataInfo<List<ArticleData>>>
+
+    /**
+     * 获取置顶文章
+     * https://www.wanandroid.com/article/top/json
+     * @return
+     */
+    @GET("article/top/json")
+    suspend fun getTopArticle(): BaseResponse<MutableList<ArticleData>>
 }

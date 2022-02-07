@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
 import com.zhengsr.viewpagerlib.indicator.CircleIndicator
 import com.zhengsr.wanandroid_jetpack.R
+import com.zhengsr.wanandroid_jetpack.ui.BannerView
 import com.zhengsr.wanandroid_jetpack.utils.GlideApp
 
 
@@ -26,8 +27,8 @@ object NetDataBindApter{
     private const val TAG = "NetDataBindApter"
     @JvmStatic
     @BindingAdapter("banner")
-    fun banner(bannerViewPager2: BannerViewPager2,datas: MutableList<BannerBean>?){
-        datas?.let {
+    fun banner(bannerView: BannerView,datas: MutableList<BannerBean>?){
+       /* datas?.let {
             val viewGroup = bannerViewPager2.parent as ViewGroup
             //通过拿到父布局去加载 indicator
             val circleIndicator = viewGroup.findViewById<CircleIndicator>(R.id.banner_indicator)
@@ -49,6 +50,9 @@ object NetDataBindApter{
 
             })
             bannerViewPager2.startAnim()
+        }*/
+        datas?.let {
+            bannerView.setData(datas)
         }
     }
 }

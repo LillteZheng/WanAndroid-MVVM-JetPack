@@ -32,12 +32,13 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             val bannerData = getApi().getBanner().data
             state.bannerBeans.postValue(bannerData)
             val data = getApi().getArticle(0).data
-            Log.d(TAG, "zsr initViewModel: ${data.datas[0]}")
+            val topData = getApi().getTopArticle().data
+            topData.addAll(data.datas)
             withMain {
                 val bind = binding as FragmentHomeBinding
                 bind.rv.linear().setup {
                     addType<ArticleData>(R.layout.item_article_recy_layout)
-                }.models = data.datas
+                }.models = topData
 
             }
         }
@@ -53,7 +54,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
     override fun onResume() {
         super.onResume()
-        val bind = binding as FragmentHomeBinding
+       // val bind = binding as FragmentHomeBinding
     }
 
 

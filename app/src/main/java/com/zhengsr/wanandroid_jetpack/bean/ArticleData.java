@@ -260,6 +260,7 @@ public class ArticleData implements Serializable {
     }
 
     public String getTitle() {
+        title = title.replaceAll("&ldquo;","“").replaceAll("&rdquo;","”");
         return title;
     }
 
