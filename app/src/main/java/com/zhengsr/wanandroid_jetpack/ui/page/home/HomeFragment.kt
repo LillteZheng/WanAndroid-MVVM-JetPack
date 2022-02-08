@@ -1,6 +1,12 @@
 package com.zhengsr.wanandroid_jetpack.ui.page.home
 
+import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.kevin.delegationadapter.AdapterDelegate
 import com.kevin.delegationadapter.DelegationAdapter
 import com.kunminx.architecture.ui.page.DataBindingConfig
@@ -21,33 +27,46 @@ import com.zhengsr.wanandroid_jetpack.utils.scopeIo
 import com.zhengsr.wanandroid_jetpack.utils.withMain
 import okhttp3.internal.addHeaderLenient
 
+
+
+
 class HomeFragment : BaseFragment<HomeViewModel>() {
     private val TAG = "HomeFragment"
     private val adapterDelegate  by lazy { DelegationAdapter()}
     override fun initViewModel() {
         state = getViewModel(HomeViewModel::class.java)
+    }
 
-        state.scopeIo {
-            val bannerData = getApi().getBanner().data
-
-
-            val data = getApi().getArticle(0).data
-            val topData = getApi().getTopArticle().data
-            topData.addAll(data.datas)
-            withMain {
-                val bind = binding as FragmentHomeBinding
-                adapterDelegate.addDelegate(BannerAdapter())
-                adapterDelegate.addDelegate(ArticleAdapter())
-                bind.rv.linear{
-                    it.adapter = adapterDelegate
-                    val loopBannerBean = LoopBannerBean()
-                    loopBannerBean.data = bannerData
-                    adapterDelegate.addHeaderItem(loopBannerBean)
-                    adapterDelegate.addDataItems(topData)
-                }
-
-            }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val onCreateView = super.onCreateView(inflater, container, savedInstanceState)
+        val bind = binding as FragmentHomeBinding
+        adapterDelegate.addDelegate(BannerAdapter())
+        adapterDelegate.addDelegate(ArticleAdapter())
+        bind.rv.linear{
+            it.adapter = adapterDelegate
         }
+
+        listenerData()
+
+        return onCreateView
+    }
+
+    private fun listenerData() {
+        state.bannerList.listener {
+            adapterDelegate.addHeaderItem(it)
+        }
+        state.articleList.listener {
+            adapterDelegate.addDataItems(it)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        state.refresh()
     }
 
 
@@ -57,11 +76,6 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        val bind = binding as FragmentHomeBinding
-
-    }
 
     override fun onStart() {
         super.onStart()

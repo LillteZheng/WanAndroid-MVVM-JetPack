@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -29,6 +31,11 @@ abstract class BaseFragment<T : ViewModel> : DataBindingFragment() {
         getApplicationViewModel(ShareViewModel::class.java)
     }
 
+    protected fun <T> LiveData<T>.listener(block :(T)->Unit){
+        this.observe(mActivity, {
+            block.invoke(it)
+        })
+    }
     private val fragmentProvider by lazy {
         ViewModelProvider(mActivity)
     }
