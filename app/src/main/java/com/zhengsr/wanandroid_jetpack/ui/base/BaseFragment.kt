@@ -1,22 +1,21 @@
 package com.zhengsr.wanandroid_jetpack.ui.base
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.kunminx.architecture.ui.page.DataBindingConfig
 import com.kunminx.architecture.ui.page.DataBindingFragment
 import com.zhengsr.wanandroid_jetpack.MainApplication
+import com.zhengsr.wanandroid_jetpack.R
 import com.zhengsr.wanandroid_jetpack.ui.data.ShareViewModel
-import java.lang.reflect.Modifier
-import kotlin.contracts.ReturnsNotNull
+import com.zhengsr.wanandroid_jetpack.ui.window.CommonDialog
+import com.zhengsr.wanandroid_jetpack.utils.scopeDe
+import kotlinx.coroutines.delay
 
 /**
  * @author by zhengshaorui 2022/1/24
@@ -26,16 +25,28 @@ abstract class BaseFragment<T : ViewModel> : DataBindingFragment() {
     private val TAG = "BaseFragment"
     protected lateinit var state: T
 
-
     protected val event: ShareViewModel by lazy {
         getApplicationViewModel(ShareViewModel::class.java)
     }
 
-    protected fun <T> LiveData<T>.listener(block :(T)->Unit){
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
+        initData(view)
+        return view
+    }
+
+    open fun initData(view: View?){}
+
+    protected fun <T> LiveData<T>.listener(block: (T) -> Unit) {
         this.observe(mActivity, {
             block.invoke(it)
         })
     }
+
     private val fragmentProvider by lazy {
         ViewModelProvider(mActivity)
     }
@@ -56,4 +67,5 @@ abstract class BaseFragment<T : ViewModel> : DataBindingFragment() {
     protected open fun nav(): NavController? {
         return NavHostFragment.findNavController(this)
     }
+
 }

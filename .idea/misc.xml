@@ -24,6 +24,8 @@
         <entry key="app/src/main/res/layout/fragment_person.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_article_recy_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_mine.xml" value="0.3061594202898551" />
+        <entry key="app/src/main/res/layout/load_error_layout.xml" value="0.17558022199798184" />
+        <entry key="app/src/main/res/layout/loadingview_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_main234.xml" value="0.17558022199798184" />
         <entry key="app/src/main/res/layout/toolbar_common.xml" value="0.2329192546583851" />
       </map>
