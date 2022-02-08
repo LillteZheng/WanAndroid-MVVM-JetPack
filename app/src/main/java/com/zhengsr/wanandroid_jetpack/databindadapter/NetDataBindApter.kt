@@ -28,31 +28,13 @@ object NetDataBindApter{
     @JvmStatic
     @BindingAdapter("banner")
     fun banner(bannerView: BannerView,datas: MutableList<BannerBean>?){
-       /* datas?.let {
-            val viewGroup = bannerViewPager2.parent as ViewGroup
-            //通过拿到父布局去加载 indicator
-            val circleIndicator = viewGroup.findViewById<CircleIndicator>(R.id.banner_indicator)
-            bannerViewPager2.addIndicator(circleIndicator)
-            bannerViewPager2.setPageListener(R.layout.banner_item_layout,it,object:PageHelperListener<BannerBean>(){
-                override fun bindView(view: View, data: BannerBean, position: Int) {
-                    val imageView: ImageView = view.findViewById(R.id.banner_icon)
-                    val title: String =
-                        data.title.replace("&ldquo;", "\"").replace("&rdquo;", "\"")
-                    setText(view, R.id.banner_text, title)
-                    GlideApp.with(view)
-                        .load(data.imagePath)
-                        .dontAnimate()
-                        .centerCrop()
-                        .placeholder(R.drawable.ic_loading)
-                        .error(R.drawable.ic_not_network)
-                        .into(imageView)
-                }
-
-            })
-            bannerViewPager2.startAnim()
-        }*/
         datas?.let {
-            bannerView.setData(datas)
+            //bannerView.setData(datas)
         }
+    }
+    @JvmStatic
+    @BindingAdapter("bannerAnim")
+    fun bannerAnim(bannerView: BannerView,startBanner:Boolean){
+        bannerView.startBanner(startBanner)
     }
 }

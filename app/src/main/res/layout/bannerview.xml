@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+        <variable
+            name="banner"
+            type="com.zhengsr.wanandroid_jetpack.bean.LoopBannerBean" />
+    </data>
+
+    <com.zhengsr.wanandroid_jetpack.ui.BannerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:data = "@{banner}"
+        >
+
+    </com.zhengsr.wanandroid_jetpack.ui.BannerView>
+</layout>

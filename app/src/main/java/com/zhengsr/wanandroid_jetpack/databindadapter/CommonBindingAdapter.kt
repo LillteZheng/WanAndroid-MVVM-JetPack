@@ -4,6 +4,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.zhengsr.wanandroid_jetpack.R
 
 /**
@@ -38,6 +40,14 @@ object CommonBindingAdapter {
             imageView.setImageResource(R.drawable.icon_like_article_select)
         }else{
             imageView.setImageResource(R.drawable.icon_like_article_not_selected)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("refreshListener")
+    fun refreshListener(smartRefreshLayout: SmartRefreshLayout,listener:OnRefreshListener?){
+        listener?.let {
+            smartRefreshLayout.setOnRefreshListener(listener)
         }
     }
 }

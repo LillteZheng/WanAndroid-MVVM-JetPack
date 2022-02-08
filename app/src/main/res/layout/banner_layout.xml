@@ -1,43 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:clipChildren="false"
-    app:cardCornerRadius="4dp"
-    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="bean"
+            type="com.zhengsr.wanandroid_jetpack.bean.BannerBean" />
+    </data>
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:clipChildren="false">
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        app:cardCornerRadius="4dp"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-        <com.zhengsr.viewpagerlib.view.BannerViewPager2
-            android:id="@+id/banner"
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipChildren="false"
-            app:banner_isAutoLoop="true"
-            app:banner_iscycle="true"
-            app:banner_looptime="4000"
-            app:banner_switchtime="600"
-            app:banner_transformer="depth" />
+            android:layout_height="210dp"
+            android:clipChildren="false">
 
-        <com.zhengsr.viewpagerlib.indicator.CircleIndicator
-            android:id="@+id/banner_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            app:cir_horizon_margin="13dp"
-            app:cir_normalColor="@color/page_gray_cc"
-            app:cir_rect_width="15dp"
-            app:cir_selectedColor="@color/white"
-            app:cir_size="5dp"
-            app:cir_type="cirToRect" />
-    </FrameLayout>
+            <com.zhengsr.viewpagerlib.view.BannerViewPager2
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                app:banner_isAutoLoop="true"
+                app:banner_iscycle="true"
+                app:banner_looptime="4000"
+                app:banner_switchtime="600"
+                app:banner_transformer="depth" />
+
+            <com.zhengsr.viewpagerlib.indicator.CircleIndicator
+                android:id="@+id/banner_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                app:cir_horizon_margin="13dp"
+                app:cir_normalColor="@color/page_gray_cc"
+                app:cir_rect_width="15dp"
+                app:cir_selectedColor="@color/white"
+                app:cir_size="5dp"
+                app:cir_type="cirToRect" />
+        </FrameLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

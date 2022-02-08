@@ -18,7 +18,7 @@ interface HttpServerApi {
      * @return
      */
     @GET("banner/json")
-    suspend fun getBanner(): BaseResponse<List<BannerBean>>
+    suspend fun getBanner(): BaseResponse<MutableList<BannerBean>>
 
     /**
      * 获取文章

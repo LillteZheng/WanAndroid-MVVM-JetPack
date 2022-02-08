@@ -1,6 +1,10 @@
 package com.zhengsr.wanandroid_jetpack.ui.base
 
+import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -19,6 +23,8 @@ import kotlin.contracts.ReturnsNotNull
 abstract class BaseFragment<T : ViewModel> : DataBindingFragment() {
     private val TAG = "BaseFragment"
     protected lateinit var state: T
+
+
     protected val event: ShareViewModel by lazy {
         getApplicationViewModel(ShareViewModel::class.java)
     }

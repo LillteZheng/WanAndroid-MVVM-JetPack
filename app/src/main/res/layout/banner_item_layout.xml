@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="banner"
+            name="bean"
             type="com.zhengsr.wanandroid_jetpack.bean.BannerBean" />
     </data>
 
@@ -19,7 +19,7 @@
             android:id="@+id/banner_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:imageUrl="@{banner.imagePath}"
+            app:imageUrl="@{bean.imagePath}"
             android:scaleType="centerCrop" />
 
         <FrameLayout
@@ -36,7 +36,7 @@
                 android:layout_marginLeft="8dp"
                 android:textSize="14sp"
                 android:gravity="center_vertical"
-                app:textMsg="@{banner.title}"
+                app:textMsg="@{bean.title}"
                 android:textColor="@color/white" />
         </FrameLayout>
 

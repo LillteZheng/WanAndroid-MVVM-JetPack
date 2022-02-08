@@ -24,6 +24,8 @@ object DrawerDatabindAdapter  {
     @JvmStatic
     @BindingAdapter(value = ["bindDrawerListener"], requireAll = false)
     fun listenDrawerState(drawerLayout: DrawerLayout, listener: SimpleDrawerListener?) {
-        drawerLayout.addDrawerListener(listener!!)
+        listener?.let {
+            drawerLayout.addDrawerListener(it)
+        }
     }
 }
