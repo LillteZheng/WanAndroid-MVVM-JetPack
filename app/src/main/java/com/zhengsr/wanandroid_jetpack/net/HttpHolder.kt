@@ -5,7 +5,6 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.zhengsr.wanandroid_jetpack.MainApplication
-import com.zhengsr.wanandroid_jetpack.bean.BaseResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.fastjson.FastJsonConverterFactory

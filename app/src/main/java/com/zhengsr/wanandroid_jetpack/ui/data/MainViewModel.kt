@@ -8,6 +8,6 @@ import androidx.lifecycle.ViewModel
  * describe：
  */
 class MainViewModel : ViewModel() {
-    val drawerOpen = ObservableBoolean(false)
+    val openDrawer = ObservableBoolean(false)
 
 }

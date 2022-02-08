@@ -33,20 +33,14 @@
                 app:click="@{click}"
                 app:vm="@{vm}"
                 />
-           <!-- <com.zhengsr.wanandroid_jetpack.ui.BannerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:banner="@{vm.bannerBeans}"
-                app:bannerAnim="@{vm.bannerAnim}"
-                app:layout_scrollFlags="exitUntilCollapsed|scroll|enterAlwaysCollapsed"
-                />-->
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/normal_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:refreshListener="@{refreshListener}"
+            app:loadMore="@{vm.onLoadMore}"
+            app:refresh="@{vm.onRefresh}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <com.scwang.smart.refresh.header.ClassicsHeader

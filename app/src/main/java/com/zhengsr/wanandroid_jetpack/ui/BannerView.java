@@ -49,60 +49,46 @@ public class BannerView extends FrameLayout {
         super(context, attrs);
 
         removeAllViews();
-        //DataBindingUtil.inflate(LayoutInflater.from(getContext()),R.layout.banner_layout,this,false)
+        setClickable(true);
         mView = LayoutInflater.from(getContext()).inflate(R.layout.banner_layout, this, false);
+        mView.setClickable(true);
         addView(mView);
-       // mView.setTag("layout/lm_condition_holder_0");
         dataBinding = DataBindingUtil.bind(mView);
-       // bind.setVariable(BR.bean,)
-        Log.d(TAG, "zsr BannerView: "+mView);
         mBannerViewPager = mView.findViewById(R.id.banner);
         CircleIndicator indicator = mView.findViewById(R.id.banner_indicator);
-
         mBannerViewPager.addIndicator(indicator);
     }
-
+    private LoopBannerBean mBean;
     public void setData(LoopBannerBean beans){
-        if (beans != null && beans.data != null) {
-            Log.d(TAG, "zsr setData: "+dataBinding);
-            mBannerViewPager.setPageListener(R.layout.banner_item_layout, beans.data, new PageHelperListener<BannerBean>() {
+        mBean = beans;
+        if (mBean != null && mBean.data != null) {
+            mBannerViewPager.setPageListener(R.layout.banner_item_layout, mBean.data, new PageHelperListener<BannerBean>() {
                 @Override
                 public void bindView(View view, BannerBean data, int position) {
-                    /*String title = data.getTitle().replaceAll("&ldquo;", "\"").replaceAll("&rdquo;", "\"");
-                    setText(view, R.id.banner_text, title);
-                    ImageView imageView = view.findViewById(R.id.banner_icon);
-                    GlideApp.with(view)
-                            .load(data.getImagePath())
-                            .dontAnimate()
-                            .centerCrop()
-                            .placeholder(R.drawable.ic_loading)
-                            .error(R.drawable.ic_not_network)
-                            .into(imageView);*/
                     ViewDataBinding bind = DataBindingUtil.bind(view);
                     if (bind != null) {
                         bind.setVariable(BR.bean,data);
                     }
                 }
 
-                /*@Override
+                @Override
                 public void onItemClick(View view, BannerBean bean, int position) {
                     super.onItemClick(view, bean, position);
-                    *//*WebBean webBean = new WebBean();
+                    WebBean webBean = new WebBean();
                     webBean.id = bean.getId();
                     webBean.title = bean.getTitle();
                     webBean.url = bean.getUrl();
                     webBean.isShowIcon = false;
-                    Intent intent = new Intent(getContext(), WebViewActivity.class);
+
+                    /*Intent intent = new Intent(getContext(), WebViewActivity.class);
                     intent.putExtra("bean",webBean);
-                    getContext().startActivity(intent);*//*
-                }*/
+                    getContext().startActivity(intent);*/
+                }
             });
             mBannerViewPager.startAnim();
 
         }
     }
-
-
 
 
     public void startBanner(boolean startBanner) {

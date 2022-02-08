@@ -10,6 +10,7 @@
     </data>
 
     <com.zhengsr.wanandroid_jetpack.ui.BannerView
+        android:id="@+id/bannerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:data = "@{banner}"

@@ -57,16 +57,20 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
     private fun listenerData() {
         state.bannerList.listener {
-            adapterDelegate.addHeaderItem(it)
+            adapterDelegate.setHeaderItem(it)
         }
         state.articleList.listener {
+            adapterDelegate.setDataItems(it)
+        }
+        state.loadMoreArticleList.listener {
             adapterDelegate.addDataItems(it)
         }
+        state.onRefresh()
     }
 
     override fun onResume() {
         super.onResume()
-        state.refresh()
+
     }
 
 

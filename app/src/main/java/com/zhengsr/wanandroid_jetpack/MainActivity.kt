@@ -13,7 +13,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         event.drawerOpenOrClose.observe(this,{
-            state.drawerOpen.set(it)
+            state.openDrawer.set(it)
         })
     }
     override fun initViewModel() {
@@ -28,12 +28,12 @@ class MainActivity : BaseActivity<MainViewModel>() {
     inner class ListenerHandler : SimpleDrawerListener() {
         override fun onDrawerOpened(drawerView: View) {
             super.onDrawerOpened(drawerView)
-            state.drawerOpen.set(true)
+            state.openDrawer.set(true)
         }
 
         override fun onDrawerClosed(drawerView: View) {
             super.onDrawerClosed(drawerView)
-            state.drawerOpen.set(false)
+            state.openDrawer.set(false)
         }
     }
 }

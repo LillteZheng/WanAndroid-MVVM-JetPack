@@ -25,13 +25,7 @@ import com.zhengsr.wanandroid_jetpack.utils.GlideApp
  */
 object NetDataBindApter{
     private const val TAG = "NetDataBindApter"
-    @JvmStatic
-    @BindingAdapter("banner")
-    fun banner(bannerView: BannerView,datas: MutableList<BannerBean>?){
-        datas?.let {
-            //bannerView.setData(datas)
-        }
-    }
+
     @JvmStatic
     @BindingAdapter("bannerAnim")
     fun bannerAnim(bannerView: BannerView,startBanner:Boolean){
