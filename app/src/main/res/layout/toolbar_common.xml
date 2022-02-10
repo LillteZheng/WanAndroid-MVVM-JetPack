@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.zhengsr.wanandroid_jetpack.ui.page.home.HomeViewModel" />
+            type="com.zhengsr.wanandroid_jetpack.ui.viewmodel.HomeViewModel" />
         <variable
             name="click"
             type="com.zhengsr.wanandroid_jetpack.ui.page.home.HomeFragment.ClickProxy" />

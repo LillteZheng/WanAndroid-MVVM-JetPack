@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="bean"
             type="com.zhengsr.wanandroid_jetpack.bean.BannerBean" />
@@ -26,18 +27,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipChildren="false"
+                app:banner2_l_margin="20dp"
+                app:banner2_r_margin="20dp"
                 app:banner_isAutoLoop="true"
                 app:banner_iscycle="true"
                 app:banner_looptime="4000"
                 app:banner_switchtime="600"
-                app:banner_transformer="depth" />
+                app:banner_transformer="mz" />
 
             <com.zhengsr.viewpagerlib.indicator.CircleIndicator
                 android:id="@+id/banner_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="bottom|end"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center_vertical"
                 app:cir_horizon_margin="13dp"
                 app:cir_normalColor="@color/page_gray_cc"

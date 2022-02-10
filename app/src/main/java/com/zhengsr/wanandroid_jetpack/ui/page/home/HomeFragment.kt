@@ -1,9 +1,9 @@
 package com.zhengsr.wanandroid_jetpack.ui.page.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.content.Context
+import android.net.wifi.WifiManager
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import com.kevin.delegationadapter.DelegationAdapter
 import com.kunminx.architecture.ui.page.DataBindingConfig
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -11,10 +11,16 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.zhengsr.wanandroid_jetpack.BR
 import com.zhengsr.wanandroid_jetpack.R
 import com.zhengsr.wanandroid_jetpack.databinding.FragmentHomeBinding
+import com.zhengsr.wanandroid_jetpack.net.getApi
 import com.zhengsr.wanandroid_jetpack.ui.adapter.ArticleAdapter
 import com.zhengsr.wanandroid_jetpack.ui.adapter.BannerAdapter
 import com.zhengsr.wanandroid_jetpack.ui.base.BaseNetFragment
+import com.zhengsr.wanandroid_jetpack.ui.viewmodel.HomeViewModel
 import com.zhengsr.wanandroid_jetpack.utils.linear
+import com.zhengsr.wanandroid_jetpack.utils.scopeIo
+import dev.utils.app.BarUtils
+import dev.utils.app.NetWorkUtils
+import dev.utils.app.wifi.WifiUtils
 
 
 class HomeFragment : BaseNetFragment<HomeViewModel>() {
@@ -42,25 +48,38 @@ class HomeFragment : BaseNetFragment<HomeViewModel>() {
             adapterDelegate.setHeaderItem(it)
         }
         state.articleList.listener {
-            adapterDelegate.setDataItems(it)
+            state.pageNum.value?.let { num->
+                if (num == 0){
+                    adapterDelegate.setDataItems(it)
+                }else{
+                    adapterDelegate.addDataItems(it)
+                }
+            }
+
             showSuccess(1500)
         }
-        state.loadMoreArticleList.listener {
-            adapterDelegate.addDataItems(it)
+        state.failStatus.listener {
+            if (it){
+                showError()
+            }
         }
+
         state.onRefresh()
     }
 
-    override fun onResume() {
-        super.onResume()
-
+    override fun reload() {
+        super.reload()
+        showLoading()
+        state.onRefresh()
     }
+
 
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_home,BR.vm,state)
             .addBindingParam(BR.click,ClickProxy())
     }
+
 
 
 
@@ -82,10 +101,5 @@ class HomeFragment : BaseNetFragment<HomeViewModel>() {
             event.drawerOpenOrClose.value = true
         }
     }
-    inner class RefreshListener : OnRefreshListener{
-        override fun onRefresh(refreshLayout: RefreshLayout) {
-            TODO("Not yet implemented")
-        }
 
-    }
 }

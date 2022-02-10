@@ -21,6 +21,7 @@ class MainApplication :Application(),ViewModelStoreOwner{
     private lateinit var viewModelStore : ViewModelStore
     override fun onCreate() {
         super.onCreate()
+        CrashHandler()
         context = applicationContext
         viewModelStore = ViewModelStore()
     }

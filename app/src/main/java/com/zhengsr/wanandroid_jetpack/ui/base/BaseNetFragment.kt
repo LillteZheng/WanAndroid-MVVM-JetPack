@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import com.zhengsr.wanandroid_jetpack.MainApplication
 import com.zhengsr.wanandroid_jetpack.R
+import dev.utils.app.NetWorkUtils
 
 /**
  * @author by zhengshaorui 2022/2/8
@@ -46,11 +47,19 @@ abstract class BaseNetFragment<T : ViewModel> : BaseFragment<T>() {
         errorView?.visibility = View.GONE
         loadingView?.visibility = View.GONE
         normalView?.visibility = View.GONE
+
+        errorView?.let {
+            it.findViewById<View>(R.id.error_reload_tv).setOnClickListener {
+                reload()
+            }
+        }
     }
 
     open fun showLoading() {
         showCurrentView(LOADING_VIEW)
     }
+
+    protected open fun reload(){}
 
     open fun showError() {
         showCurrentView(ERROR_VIEW)

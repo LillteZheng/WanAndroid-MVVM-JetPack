@@ -31,6 +31,8 @@ public class BaseResponse<T> {
         this.errorMsg = errorMsg;
     }
 
+
+
     @Override
     public String toString() {
         return "BaseResponse{" +

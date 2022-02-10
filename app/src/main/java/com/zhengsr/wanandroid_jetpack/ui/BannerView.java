@@ -58,11 +58,9 @@ public class BannerView extends FrameLayout {
         CircleIndicator indicator = mView.findViewById(R.id.banner_indicator);
         mBannerViewPager.addIndicator(indicator);
     }
-    private LoopBannerBean mBean;
     public void setData(LoopBannerBean beans){
-        mBean = beans;
-        if (mBean != null && mBean.data != null) {
-            mBannerViewPager.setPageListener(R.layout.banner_item_layout, mBean.data, new PageHelperListener<BannerBean>() {
+        if (beans != null && beans.data != null) {
+            mBannerViewPager.setPageListener(R.layout.banner_item_layout, beans.data, new PageHelperListener<BannerBean>() {
                 @Override
                 public void bindView(View view, BannerBean data, int position) {
                     ViewDataBinding bind = DataBindingUtil.bind(view);

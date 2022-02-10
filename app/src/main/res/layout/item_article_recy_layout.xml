@@ -9,7 +9,7 @@
             type="com.zhengsr.wanandroid_jetpack.bean.ArticleData" />
         <variable
             name="vm"
-            type="com.zhengsr.wanandroid_jetpack.ui.page.home.HomeViewModel" />
+            type="com.zhengsr.wanandroid_jetpack.ui.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
